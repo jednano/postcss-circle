@@ -1,7 +1,7 @@
 {
   "name": "postcss-circle",
-  "version": "0.0.2",
-  "description": "PostCSS plugin to insert colors for all link-related pseudo-classes.",
+  "version": "0.0.3",
+  "description": "PostCSS plugin to insert a circle with color.",
   "scripts": {
     "test": "sh ./scripts/test"
   },
@@ -12,9 +12,7 @@
   "keywords": [
     "postcss",
     "postcss-plugin",
-    "link",
-    "colors",
-    "pseudo-classes"
+    "circle"
   ],
   "author": "Jed Mao <jedmao@outlook.com>",
   "license": "MIT",
