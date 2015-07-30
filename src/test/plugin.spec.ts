@@ -4,65 +4,96 @@ import postcss from 'postcss';
 import plugin from '../lib/plugin';
 
 // ReSharper disable WrongExpressionStatement
-describe('@circle at-rule', () => {
+describe('postcss-circle plugin', () => {
 
-	it('throws if parameters are supplied in the prelude', () => {
+	it('throws if no circle-diameter property is supplied', () => {
+		[
+			`foo {
+				circle-color: red;
+			}`,
+			`foo {
+				circle: red;
+			}`
+		].forEach(scenario => {
+			check(scenario, /Missing required property: circle-diameter/);
+		});
+	});
+
+	it('throws if no circle-color property is supplied', () => {
+		[
+			`foo {
+				circle-diameter: 100px;
+			}`,
+			`foo {
+				circle: 100px;
+			}`
+		].forEach(scenario => {
+			check(scenario, /Missing required property: circle-color/);
+		});
+	});
+
+	it('throws if a circle-bar property is provided', () => {
 		check(
 			`foo {
-				@circle bar;
+				circle-bar: baz;
 			}`,
-			/Parameters are not supported: bar/
+			/Unsupported property: circle-bar/
 		);
 	});
 
-	it('throws if no diameter property is supplied', () => {
-		check(
+	it('transpiles into expected CSS declarations', () => {
+		[
 			`foo {
-				@circle {
-					color: red;
-				}
+				circle-diameter: 100px;
+				circle-color: red;
 			}`,
-			/Missing required property: diameter/
-		);
+			`foo {
+				circle: 100px red;
+			}`,
+			`foo {
+				circle: red 100px;
+			}`
+		].forEach(scenario => {
+			check(
+				scenario,
+				`foo {
+					border-radius: 50%;
+					width: 100px;
+					height: 100px;
+					background-color: red;
+				}`
+			);
+		});
 	});
 
-	it('throws if no color property is supplied', () => {
+	it('preserves the order in which properties are provided', () => {
 		check(
 			`foo {
-				@circle {
-					diameter: 100px;
-				}
-			}`,
-			/Missing required property: color/
-		);
-	});
-
-	it('throws if an unknown property, bar, is provided', () => {
-		check(
-			`foo {
-				@circle {
-					diameter: 100px;
-					color: red;
-					bar: baz;
-				}
-			}`,
-			/Unsupported property: bar/
-		);
-	});
-
-	it('replaces itself with correct circle declarations', () => {
-		check(
-			`foo {
-				@circle {
-					diameter: 100px;
-					color: red;
-				}
+				bar: BAR;
+				circle-color: red;
+				baz: BAZ;
+				circle-diameter: 100px;
+				qux: QUX;
 			}`,
 			`foo {
+				bar: BAR;
+				background-color: red;
+				baz: BAZ;
 				border-radius: 50%;
 				width: 100px;
 				height: 100px;
-				background-color: red
+				qux: QUX;
+			}`
+		);
+	});
+
+	it('ignores a property named circlefoo', () => {
+		check(
+			`foo {
+				circlefoo: bar;
+			}`,
+			`foo {
+				circlefoo: bar;
 			}`
 		);
 	});
