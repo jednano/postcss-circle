@@ -22,12 +22,13 @@ Creating a circle in CSS [isn't terribly difficult](http://davidwalsh.name/css-c
 
 ```css
 .circle {
-	circle-diameter: 100px;
-	circle-color: red;
+	circle: <diameter> [color];
 }
 ```
 
-You could also write this with the `circle` shorthand property:
+The `diameter` is required and the `color` is optional. You don't have to remember the order, because you can swap their positions.
+
+Let's create a `red` circle with a `100px` diameter:
 
 ```css
 .circle {
@@ -35,7 +36,7 @@ You could also write this with the `circle` shorthand property:
 }
 ```
 
-Both would transpiles into:
+This transpiles into:
 
 ```css
 .circle {

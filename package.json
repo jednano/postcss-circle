@@ -1,6 +1,6 @@
 {
   "name": "postcss-circle",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "PostCSS plugin to insert a circle with color.",
   "scripts": {
     "test": "sh ./scripts/test"
