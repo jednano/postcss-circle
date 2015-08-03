@@ -1,3 +1,6 @@
+## 0.0.7
+- Fix package (remove index.js).
+
 ## 0.0.6
 - Fix package.
 - Reorganize files.
