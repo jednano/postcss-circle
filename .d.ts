@@ -1,4 +1,4 @@
 declare module 'postcss-circle' {
-	import * as plugin from 'd.ts/plugin';
+	import plugin from 'dist/plugin';
 	export default plugin;
 }

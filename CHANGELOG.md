@@ -1,3 +1,7 @@
+## 0.0.6
+- Fix package.
+- Reorganize files.
+
 ## 0.0.5
 - Removed `circle-diameter` and `circle-color` properties.
 - Only the `circle` property is supported.
