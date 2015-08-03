@@ -1,3 +1,7 @@
+## 0.0.8
+- Fix package.
+- Move babel-core to dev dependency.
+
 ## 0.0.7
 - Fix package (remove index.js).
 
