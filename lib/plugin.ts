@@ -1,4 +1,4 @@
-﻿///<reference path="../typings/postcss/.d.ts" />
+﻿///<reference path="../node_modules/postcss/postcss.d.ts" />
 import postcss from 'postcss';
 
 const errorContext = {
@@ -8,8 +8,8 @@ const errorContext = {
 // ReSharper disable once UnusedLocals
 export default postcss.plugin('postcss-circle', () => {
 	return root => {
-		root.eachRule(rule => {
-			rule.eachDecl('circle', decl => {
+		root.walkRules(rule => {
+			rule.walkDecls('circle', decl => {
 				let [diameter, color] = postcss.list.space(decl.value);
 				if (!/^\d/.test(diameter)) {
 					[diameter, color] = [color, diameter];

@@ -1,3 +1,6 @@
+## 1.0.0
+- Supports PostCSS 5.x.
+
 ## 0.0.8
 - Fix package.
 - Move babel-core to dev dependency.
@@ -18,5 +21,5 @@
 - Supports `circle` shorthand property.
 
 ## 0.0.1
-- Initial release.
+- Supports PostCSS 4.x.
 - Uses `@circle` at-rule to create a circle.
