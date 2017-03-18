@@ -6,8 +6,9 @@
 
 [![NPM version](http://img.shields.io/npm/v/postcss-circle.svg?style=flat)](https://www.npmjs.org/package/postcss-circle)
 [![npm license](http://img.shields.io/npm/l/postcss-circle.svg?style=flat-square)](https://www.npmjs.org/package/postcss-circle)
-[![Travis Build Status](https://img.shields.io/travis/jedmao/postcss-circle.svg?label=unix)](https://travis-ci.org/jedmao/postcss-circle)
-[![AppVeyor Build Status](https://img.shields.io/appveyor/ci/jedmao/postcss-circle.svg?label=windows)](https://ci.appveyor.com/project/jedmao/postcss-circle)
+[![Travis Build Status](https://img.shields.io/travis/jedmao/postcss-circle.svg)](https://travis-ci.org/jedmao/postcss-circle)
+[![codecov](https://codecov.io/gh/jedmao/postcss-circle/branch/master/graph/badge.svg)](https://codecov.io/gh/jedmao/postcss-circle)
+[![Dependency Status](https://gemnasium.com/badges/github.com/jedmao/postcss-circle.svg)](https://gemnasium.com/github.com/jedmao/postcss-circle)
 
 [![npm](https://nodei.co/npm/postcss-circle.svg?downloads=true)](https://nodei.co/npm/postcss-circle/)
 
@@ -57,22 +58,15 @@ $ npm install postcss-circle
 ### JavaScript
 
 ```js
-postcss([
-	require('postcss-circle'),
-	// more plugins...
-])
+postcss([ require('postcss-circle') ]);
 ```
 
 ### TypeScript
 
 ```ts
-///<reference path="node_modules/postcss-circle/.d.ts" />
-import postcssCircle = require('postcss-circle');
+import * as postcssCircle from 'postcss-circle';
 
-postcss([
-	postcssCircle,
-	// more plugins...
-])
+postcss([ postcssCircle ]);
 ```
 
 ## Options

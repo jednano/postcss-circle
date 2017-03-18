@@ -1,12 +1,10 @@
-﻿///<reference path="../node_modules/postcss/postcss.d.ts" />
-import postcss from 'postcss';
+﻿import * as postcss from 'postcss';
 
 const errorContext = {
 	plugin: 'postcss-circle'
 };
 
-// ReSharper disable once UnusedLocals
-export default postcss.plugin('postcss-circle', () => {
+const PostCssCircle = postcss.plugin('postcss-circle', () => {
 	return root => {
 		root.walkRules(rule => {
 			rule.walkDecls('circle', decl => {
@@ -34,3 +32,5 @@ export default postcss.plugin('postcss-circle', () => {
 		});
 	};
 });
+
+export = PostCssCircle;
