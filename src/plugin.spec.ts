@@ -3,18 +3,14 @@ import * as postcss from 'postcss';
 
 import * as plugin from './plugin';
 
-test(
-	'throws if no diameter is supplied',
-	macro,
+test('throws if no diameter is supplied', macro,
 	`foo {
 		circle: red;
 	}`,
 	/Missing diameter/
 );
 
-test(
-	'transpiles diameter into expected declarations',
-	macro,
+test('transpiles diameter into expected declarations', macro,
 	`foo {
 		circle: 100px;
 	}`,
@@ -25,25 +21,25 @@ test(
 	}`
 );
 
-[
-	`foo {
-		circle: 100px red;
-	}`,
-	`foo {
-		circle: red 100px;
-	}`
-].forEach(input => {
-	test(
-		'transpiles diameter and color into expected declarations',
-		macro,
-		input,
+test('transpiles diameter and color into expected declarations', t => {
+	[
 		`foo {
-			border-radius: 50%;
-			width: 100px;
-			height: 100px;
-			background-color: red;
+			circle: 100px red;
+		}`,
+		`foo {
+			circle: red 100px;
 		}`
-	);
+	].forEach(input => {
+		macro(t,
+			input,
+			`foo {
+				border-radius: 50%;
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}`
+		);
+	});
 });
 
 function macro(
@@ -62,8 +58,7 @@ function macro(
 		processor.process(stripTabs(input)).css,
 		stripTabs(<string>expected)
 	);
-}
-
-function stripTabs(input: string) {
-	return input.replace(/\t/g, '');
+	function stripTabs(input: string) {
+		return input.replace(/\t/g, '');
+	}
 }
