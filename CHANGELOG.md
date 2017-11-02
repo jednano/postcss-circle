@@ -1,3 +1,6 @@
+## 1.1.0
+- Upgrade to Postcss 6 (still works with PostCSS 5).
+
 ## 1.0.0
 - Supports PostCSS 5.x.
 

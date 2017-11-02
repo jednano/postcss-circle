@@ -1,4 +1,4 @@
-﻿import test, { ContextualTestContext } from 'ava';
+﻿import test, { TestContext } from 'ava';
 import * as postcss from 'postcss';
 
 import * as plugin from './plugin';
@@ -43,7 +43,7 @@ test('transpiles diameter and color into expected declarations', t => {
 });
 
 function macro(
-	t: ContextualTestContext,
+	t: TestContext,
 	input: string,
 	expected?: string | RegExp
 ) {
